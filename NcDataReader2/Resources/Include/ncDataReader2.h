@@ -25,6 +25,7 @@ extern "C" {
 
 #include <stdlib.h>
 #include <stdio.h>
+#include "msvc_compatibility.h"
 
 #if defined(BUILD_SHARED)
 #define DLL_EXPORT __declspec(dllexport)
@@ -32,7 +33,7 @@ extern "C" {
 #define DLL_EXPORT
 #endif
 
-char DLL_EXPORT *ncDataReader2Version(void);
+const char DLL_EXPORT *ncDataReader2Version(void);
 
 /* type of a function to handle errors */
 typedef void (*NcErrorHandler)(int , char *);

@@ -7,12 +7,12 @@ model Simple "Simple test model for NcDataReader2"
       annotation(Dialog(
         loadSelector(filter="netCDF files (*.nc)",
         caption="Open file")));
-    Real x "dummy variable to integrate";
-    Real a = nc.ncEasyGetAttributeDouble(fileName, "", "foo") "dummy";
-    Real y "dummy variable";
-    Real T "temperature";
-    
-    equation
+    Real x(start=0.0, fixed=true) "Dummy variable to integrate";
+    Real a = nc.ncEasyGetAttributeDouble(fileName, "", "foo") "Dummy";
+    Real y "Dummy variable";
+    Real T "Temperature";
+
+equation
     y = x * a;
     der(x) = T;
     T = nc.ncEasyGet1D(fileName, "test1D", time / 1000);
